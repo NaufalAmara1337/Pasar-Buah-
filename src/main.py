@@ -1,3 +1,5 @@
+import mylib
+
 print("selamat datang di pasar buah mang dadang")
 
 #definisikan stock buah
@@ -6,56 +8,25 @@ stockJeruk = 8
 stockAnggur = 15
 
 #definisikan harga buah
-jumlahApel = 10000
-jumlahJeruk = 15000
-jumlahAnggur = 20000
+hargaApel = 10000
+hargaJeruk = 15000
+hargaAnggur = 20000
 
-#meminta input user
-while True:
-    #input jumlah
-    Apel = int(input("Masukan Jumlah Apel: "))
-    #membandingkan antara permintaan dengan stock
-    if Apel > stockApel:
-        print(f'jumlah terlalu banyak, stock tersisa {stockApel} buah')
-        continue
-    #jika permintaan terpenuhi maka berhenti minta input
-    break
-
-#meminta input user
-while True:
-    #input jumlah
-    Jeruk = int(input("Masukan Jumlah Jeruk: "))
-    #membandingkan antara permintaan dengan stock
-    if Jeruk > stockJeruk:
-        print(f'jumlah terlalu banyak, stock tersisa {stockJeruk} buah')
-        continue
-    #jika permintaan terpenuhi maka berhenti minta input
-    break
-
-#meminta input user
-while True:
-    #input jumlah
-    Anggur = int(input("Masukan Jumlah Anggur: "))
-    #membandingkan antara permintaan dengan stock
-    if Anggur > stockAnggur:
-        print(f'jumlah terlalu banyak, stock tersisa {stockAnggur} buah')
-        continue
-    #jika permintaan terpenuhi maka berhenti minta input
-    break
+#meminta input jumlah buah apel
+nApel, totalhargaApel = mylib.inputBuah(nama="Apel", stock=stockApel, harga=hargaApel)
+nJeruk, totalhargaJeruk = mylib.inputBuah(nama="Jeruk", stock=stockJeruk, harga=hargaJeruk)
+nAnggur, totalhargaAnggur = mylib.inputBuah(nama="Anggur", stock=stockAnggur, harga=hargaAnggur)
 
 #menghitung total belanja
-tothargaApel = Apel*jumlahApel
-tothargaJeruk = Jeruk*jumlahJeruk
-tothargaAnggur = Anggur*jumlahAnggur
+totBelanja = totalhargaApel + totalhargaJeruk + totalhargaAnggur
 
-totBelanja = tothargaApel + tothargaJeruk + tothargaAnggur
-
+#tampilkan rincian belanjaan 
 print(f"""
 Detail Belanja
 
-Apel: {Apel}*{jumlahApel} = {tothargaApel}
-Jeruk: {Jeruk}*{jumlahJeruk} = {tothargaJeruk}
-Anggur: {Anggur}*{jumlahAnggur} = {tothargaAnggur}
+Apel: {nApel}*{hargaApel} = {totalhargaApel}
+Jeruk: {nJeruk}*{hargaJeruk} = {totalhargaJeruk}
+Anggur: {nAnggur}*{hargaAnggur} = {totalhargaAnggur}
       
 Total : {totBelanja}
 """)
@@ -70,7 +41,7 @@ while True:
     
     #bandingkan antara uang dan total harga
     if bayar > 0:
-        print("uang anda kurang sebesar Rp.{selisih}")
+        print(f"uang anda kurang sebesar Rp.{selisih}")
         continue
    #ucapkan terimakasih ketika selesai transaksi
     else: 
